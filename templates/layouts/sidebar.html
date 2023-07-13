@@ -1,0 +1,137 @@
+{% load static %}
+{% load i18n%}
+<!-- ========== Left Sidebar Start ========== -->
+<div class="vertical-menu">
+
+    <div data-simplebar class="h-100">
+
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                {% if request.user.is_superuser %}
+                    <li class="menu-title">{% trans 'Main' %}</li>
+                    <li>
+                        <a href="{% url 'admin-index' %}">
+                            <i class="mdi mdi-toolbox"></i>
+                            <span>{% trans 'Equipments' %}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'department-list' %}">
+                            <i class="mdi mdi-account-group"></i>
+                            <span class="badge rounded-pill bg-success float-end">{{res_count}}</span>
+                            <span>{% trans 'Departments' %}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'admin-rooms' %}">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span>{% trans 'Rooms' %}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'admin-models' %}">
+                            <i class="mdi mdi-calendar-check"></i>
+                            <span class="badge rounded-pill bg-danger float-end">{{model_count}}</span>
+                            <span>{% trans 'Models' %}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'admin-categories' %}">
+                            <i class="mdi mdi-clipboard-outline"></i>
+                            <span class="badge rounded-pill bg-info float-end">{{category_count}}</span>
+                            <span>{% trans 'Category' %}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'unknown-devices' %}">
+                            <i class="mdi mdi-help-box"></i>
+                            <span> {% trans 'Unknown Devices' %} </span>
+                        </a>
+                    </li>
+                {% elif request.user.status_member == 'wk' %}
+                    <li class="menu-title">{% trans 'Main' %}</li>
+                    <li>
+                        <a href="{% url 'responsiblepage-myproducts' %}">
+                            <i class="mdi mdi-toolbox"></i>
+                            <span>{% trans 'My Equipments' %}</span>
+                        </a>
+                    </li>
+                {% elif request.user.status_member == 'lr' %}
+                    <li class="menu-title">{% trans 'Main' %}</li>
+                    <li>
+                        <a href="{% url 'responsiblepage-index' %}">
+                            <i class="mdi mdi-toolbox"></i>
+                            <span>{% trans 'All Equipments' %}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'responsiblepage-myproducts' %}">
+                            <i class="mdi mdi-toolbox"></i>
+                            <span>{% trans 'My Equipments' %}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'responsiblepage-application' %}">
+                            <i class="mdi mdi-account-box"></i>
+                            <span class="badge rounded-pill bg-success float-end">{{ res_count}}</span>
+                            <span>{% trans 'Mening  arizalarim' %}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'responsiblepage-liderrespon' %}">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span>{% trans 'Workers' %}</span>
+                        </a>
+                    </li>
+                {% elif request.user.status_member == 'dr' or request.user.status_member == 'dp'  or request.user.status_member == 'wr'%}
+                    <li class="menu-title">{% trans 'Main' %}</li>
+                    <li>
+                        <a href="{% url 'admin-index' %}">
+                            <i class="mdi mdi-toolbox"></i>
+                            <span>{% trans 'All Equipments' %}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'department-list' %}">
+                            <i class="mdi mdi-account-group"></i>
+                            <span class="badge rounded-pill bg-success float-end">{{res_count}}</span>
+                            <span>{% trans 'Departments' %}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'responsiblepage-myproducts' %}">
+                            <i class="mdi mdi-toolbox"></i>
+                            <span>{% trans 'My Equipments' %}</span>
+                        </a>
+                    </li>
+                    {% if request.user.status_member == 'wr'%}
+                    {% else %}
+                        <li>
+                            <a href="{% url 'responsiblepage-application' %}">
+                                <i class="mdi mdi-account-box"></i>
+                                <span class="badge rounded-pill bg-success float-end">{{res_count}}</span>
+                                <span>{% trans 'Mening  arizalarim' %}</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    <li>
+                        <a href="{% url 'admin-rooms' %}">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span>{% trans 'Rooms' %}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'unknown-devices' %}">
+                            <i class="mdi mdi-help-box"></i>
+                            <span> {% trans 'Unknown Devices' %} </span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>
+<!-- Left Sidebar End -->

@@ -1,0 +1,252 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="page-title-box">
+                                    <h4>{% trans 'Inventar details' %}</h4>
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="/">{% trans 'Inventar' %}</a></li>
+                                            {% if query.category_id is not None %}
+                                            <li class="breadcrumb-item"><a href="{% url 'base-view' query.category_id.pk %}">{% trans 'Category' %}</a></li>
+                                            {% else %}
+                                            <li class="breadcrumb-item"><a href="{% url 'unknown-devices' %}">{% trans 'Unknown Devices' %}</a></li>
+                                            {% endif %}
+                                            <li class="breadcrumb-item active">{% trans 'Product' %}</li>
+                                        </ol>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="state-information d-none d-sm-block">
+                                    <div class="state-graph">
+                                        <div id="header-chart-1"></div>
+                                        <div class="info">{% trans 'Inventar' %}</div>
+                                    </div>
+                                    <div class="state-graph">
+                                        <div id="header-chart-2"></div>
+                                        <div class="info">{% trans 'Item reserved' %}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- Left sidebar -->
+                                <div class="email-leftbar card">
+                                    <div class="d-grid">
+                                        <p class="btn btn-danger rounded btn-custom waves-effect waves-light data-bs-toggle="tooltip" title="Inventar number"">{{ query.inventar_number }}</p>
+                                    </div>
+
+                                    <div class="mail-list mt-3">
+                                        <a>{% trans 'name' %}
+                                            <span class="mdi mdi-arrow-right-drop-circle text-success float-end mt-1 ms-2"></span>
+                                            <p class="text-success">{{ query.name }}</p>
+                                        </a>
+                                        <a>{% trans 'Number of Room' %}
+                                            <span class="mdi mdi-arrow-right-drop-circle text-info float-end mt-1 ms-2"></span>
+                                            <p class="text-info">{{ query.room_number }}</p>
+                                        </a>
+                                        <a>{% trans 'Model of Inventar' %}
+                                            <span class="mdi mdi-arrow-right-drop-circle text-warning float-end mt-1 ms-2"></span>
+                                            <p class="text-warning">{{ query.model_id.name }}</p>
+                                        </a>
+                                        <a>{% trans 'Responsible person' %}
+                                            <span class="mdi mdi-arrow-right-drop-circle text-primary float-end mt-1 ms-2"></span>
+                                            <p class="text-primary">{% if query.responsible.get_full_name %} {{query.responsible.get_full_name}} {% else %} {{ query.responsible.email }}{% endif %}</p>
+                                        </a>
+                                        <a>{% trans 'Seria number' %}
+                                            <span class="mdi mdi-arrow-right-drop-circle text-danger float-end mt-1 ms-2"></span>
+                                            <p class="text-danger">{{ query.seria_number }}</p>
+                                        </a>
+                                        {% if query.status == 3 %}
+                                        <a>{% trans 'Temporary responsible person' %}
+                                            <span class="mdi mdi-arrow-right-drop-circle text-success float-end mt-1 ms-2"></span>
+                                            <p class="text-success">{{ query.responsible_person }}</p>
+                                        </a>
+                                        {% endif %}
+                                        <a>{% trans 'year_of_manufacture' %}
+                                            <span class="mdi mdi-arrow-right-drop-circle text-info float-end mt-1 ms-2"></span>
+                                            <p class="text-info">{{ query.year_of_manufacture }}</p>
+                                        </a>
+                                        <a>{% trans 'Created at' %}
+                                            <span class="mdi mdi-arrow-right-drop-circle text-white float-end mt-1 ms-2"></span>
+                                            <p class="text-secondary">{{ query.created_at }}</p>
+                                        </a>
+                                        <a>{% trans 'Updated at' %}
+                                            <span class="mdi mdi-arrow-right-drop-circle text-secondary float-end mt-1 ms-2"></span>
+                                            <p class="text-secondary">{{ query.updated_at }}</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- End Left sidebar -->
+
+                                <!-- Right Sidebar -->
+                                <div class="email-rightbar mb-3">
+
+                                    <div class="card">
+                                        <div class="btn-toolbar p-3" role="toolbar">
+                                            <div class="btn-group me-2 mb-2 mb-sm-0">
+                                                {% if query.status == 3 %}
+                                                <button type="button" class="btn btn-warning waves-light waves-effect">{% trans 'Olib ketilgan' %}</button>
+                                                {% endif %}
+                                                {% if query.status == 1 %}
+                                                <button type="button" class="btn btn-success waves-light waves-effect">{% trans 'Ishlatilmoqda' %}</button>
+                                                {% endif %}
+                                                {% if query.status == 2 %}
+                                                <button type="button" class="btn btn-info waves-light waves-effect">{% trans 'Zahirada' %}</button>
+                                                {% endif %}
+                                                {% if query.status == 0 %}
+                                                <button type="button" class="btn btn-danger waves-light waves-effect">{% trans 'Yaroqsiz' %}</button>
+                                                {% endif %}
+                                            </div>
+                                            <div class="btn-group me-2 mb-2 mb-sm-0">
+                                                <a href="#" onclick="window.print();return false;"><button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-print"></i></button></a>
+                                            </div>
+                                            <div class="btn-group me-2 mb-2 mb-sm-0">
+                                                <a href="#" onclick="confirm_product_delete('{{query.id}}', '{{query.inventar_number}}');"><button type="button" class="btn btn-primary waves-light waves-effect"><i class="far fa-trash-alt"></i></button></a>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+
+                                            <div class="d-flex mb-4">
+                                                <div class="flex-shrink-0  me-3">
+                                                    <img class="rounded-circle avatar-sm hoveringimg" src="
+                                                    {% if query.category_id.image %}
+                                                    {{ query.category_id.image.url }}
+                                                    {% else %}
+                                                    {% static 'images/devices-sketch-image.jpg' %}
+                                                    {% endif %}" alt="">
+                                                    <img class="hoverimg" src="{% if query.category_id.image %}
+                                                    {{ query.category_id.image.url }}
+                                                    {% else %}
+                                                    {% static 'images/devices-sketch-image.jpg' %}
+                                                    {% endif %}">
+                                                </div>
+
+                                                <div class="flex-grow-1 align-self-center">
+                                                    <h4 class="font-size-14 m-0">{{ query.category_id.name }}</h4>
+                                                </div>
+                                            </div>
+                                            
+                                            {% for i in descript %}
+                                            <h4 class="font-size-16">{{ i }}</h4>
+                                            <hr style="color:white;"><br>
+                                            {% endfor %}
+
+                                            <div class="row text-center">
+                                                <div class="col-xl-2 col-6">
+                                                    <div class="card">
+                                                        <img class="card-img-top img-fluid" src="
+                                                        {% if query.images %}
+                                                        {{ query.images.url }}
+                                                        {% else %}
+                                                        {% static 'images/devices-sketch-image.jpg' %}
+                                                        {% endif %}">
+                                                        <div class="my-2 text-center">
+                                                            <a href="{% if query.images %}
+                                                            {{ query.images.url }}
+                                                            {% else %}
+                                                            {% static 'images/devices-sketch-image.jpg' %}
+                                                            {% endif %}" class="text-muted font-weight-normal" download>{% trans 'Download' %}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% comment %} {% if query.qr_code %} {% endcomment %}
+                                                <div class="col-xl-2 col-6">
+                                                    <div class="card">
+                                                        <img class="card-img-top img-fluid" src="https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl={{ product_qrcode }}" alt="QR Code"
+                                                        >
+                                                        <div class="my-2 text-center">
+                                                            <a href="https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl={{ product_qrcode }}" class="text-muted font-weight-normal" download>{% trans 'Download' %}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% comment %} {% endif %} {% endcomment %}
+                                                <div class="col-xl-4 col-3 text-center">
+                                                    <div class="card" style="background-color: #7A6FBE; border-radius: 20px; padding: 10%;">
+                                                        <p>{% trans 'schet' %}</p>
+                                                        <div class="my-1">
+                                                            <b>{{ query.schet }}</b>  
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 col-4 text-center">
+                                                    <div class="card" style="background-color: #7A6FBE; border-radius: 20px; padding: 10%;">
+                                                        <p>{% trans 'unit_of_measurement' %}</p>
+                                                        <div class="my-1">
+                                                            <b>{{ query.unit_of_measurement }}</b> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% if query.category_id is not None %}
+                                                {% if request.user.is_superuser or request.user.status_member == 'vr' %}
+                                                    <form action="#" method="post">
+                                                        {% csrf_token %} 
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label" for="validationCustom01">{% trans 'Change Status' %}</label>
+                                                                    <select name="status" class="form-control" id="validationCustom01">
+                                                                        <option value="1" {% if query.status == 1 %} selected {% endif %}>{% trans 'Ishlatilmoqda' %}</option>
+                                                                        <option value="3" {% if query.status == 3 %} selected {% endif %}>{% trans 'Olib ketilgan' %}</option>
+                                                                        <option value="2" {% if query.status == 2 %} selected {% endif %}>{% trans 'Zahirada' %}</option>
+                                                                        <option value="0" {% if query.status == 0 %} selected {% endif %}>{% trans 'Yaroqsiz' %}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label" for="validationCustom01">{% trans 'Add responsible person (optional)' %}</label>
+                                                                    {{ form.responsible }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label" for="validationCustom01">______</label><br>
+                                                                    <input class="btn btn-primary" type="submit" value="Submit">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                {% endif %}
+                                                {% if request.user.status_member == 'lr' or request.user.status_member == 'wk' %}
+                                                    <a href="{% url 'responsiblepage-myproducts' %}" class="btn btn-secondary waves-effect mt-5"><i
+                                                        class="mdi mdi-reply"></i> {% trans 'Return' %}</a>
+                                                {% else %}
+                                                    <a href="{% url 'base-view' query.category_id.pk %}" class="btn btn-secondary waves-effect mt-5"><i
+                                                        class="mdi mdi-reply"></i> {% trans 'Return' %}</a>
+                                                {% endif %}
+                                            {% else %}
+                                            <a href="{% url 'unknown-devices' %}" class="btn btn-secondary waves-effect mt-5"><i
+                                                class="mdi mdi-reply"></i> {% trans 'Return' %}</a>
+                                            {% endif %}
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!-- end Col-9 -->
+
+                            </div>
+
+                        </div>
+                        <!-- End row -->
+                    </div>
+                </div>
+            </div>
+                        
+{% endblock %}          

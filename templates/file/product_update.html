@@ -1,0 +1,221 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block button %}
+    <div class="d-none d-sm-block">
+        <div class="dropdown dropdown-topbar pt-3 mt-1 d-inline-block">
+            {% if equ.category_id is not None %}
+            <a class="btn btn-primary waves-effect waves-light" href="{% url 'base-view' pk=red %}">{% trans 'Return' %}</a>
+            {% else %}
+            <a class="btn btn-primary waves-effect waves-light" href="{% url 'unknown-devices' %}">{% trans 'Return' %}</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-8 col-md-10 col-6 offset-5">
+                        <div class="page-title-box">
+                            <h4>{% trans 'Update device' %}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-8 col-md-10 col-6 offset-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="needs-validation" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                     <div class="row">
+                                        {% if form.errors %}
+                                        {% for field in form %}
+                                        {% for error in field.errors %}
+                                        <p style="color: red;">{{ error|escape }}</p>
+                                        {% endfor %}
+                                        {% endfor %}
+                                        <p>{% trans "Ma'lumotlarni tekshirib qaytadan jo'nating!" %}</p>
+                                        {% endif %}
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom03">{% trans 'name' %}</label>
+{#                                                <input type="text" class="form-control" id="validationCustom03"#}
+{#                                                       placeholder="Rooms Number" required>#}
+                                                {% comment %} <select name="room_number" class="form-control" id="validationCustom03">
+                                                    <option selected disabled>Rooms Number</option>
+                                                    <option value="">Number1</option>
+                                                </select> {% endcomment %}
+                                                {{ form.name }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom04">{% trans 'Inventar Number' %}</label>
+                                                {% comment %} <input name="inventar_number" type="text" class="form-control" id="validationCustom04"
+                                                       placeholder="Inventar Number" required> {% endcomment %}
+                                                {{ form.inventar_number }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom05">{% trans 'Model' %}</label>
+{#                                                <input type="text" class="form-control" id="validationCustom05"#}
+{#                                                       placeholder="Model" required>#}
+                                                {% comment %} <select name="model_id" class="form-control" id="validationCustom05">
+                                                    <option selected disabled>Model</option>
+                                                    <option value="">Number1</option>
+                                                </select> {% endcomment %}
+                                                {{ form.model_id }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom01">{% trans 'Responsible Person' %}</label>
+{#                                                <input type="text" class="form-control" id="validationCustom01"#}
+{#                                                       placeholder="Responsible Person" value="Mark" required>#}
+                                                {% comment %} <select name="responsible_id" class="form-control" id="validationCustom01">
+                                                    <option selected disabled>Responsible Person</option>
+                                                    <option value="">Number1</option>
+                                                </select> {% endcomment %}
+                                                {{ form.responsible }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom01">{% trans 'Category' %}</label>
+{#                                                <input type="text" class="form-control" id="validationCustom01"#}
+{#                                                       placeholder="Responsible Person" value="Mark" required>#}
+                                                {% comment %} <select name="responsible_id" class="form-control" id="validationCustom01">
+                                                    <option selected disabled>Responsible Person</option>
+                                                    <option value="">Number1</option>
+                                                </select> {% endcomment %}
+                                                {{ form.category_id }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom01">{% trans 'Touch image' %}</label><br>
+{#                                                <input type="text" class="form-control" id="validationCustom01"#}
+{#                                                       placeholder="Responsible Person" value="Mark" required>#}
+                                                {% comment %} <select name="responsible_id" class="form-control" id="validationCustom01">
+                                                    <option selected disabled>Responsible Person</option>
+                                                    <option value="">Number1</option>
+                                                </select> {% endcomment %}
+                                                {{ form.images }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom01">{% trans 'Status' %}</label>
+                                                <select name="status" class="form-control" id="validationCustom01">
+                                                    <option value="1" {% if equ.status == 1 %} selected {% endif %}>{% trans 'Ishlatilmoqda' %}</option>
+                                                    <option value="3" {% if equ.status == 3 %} selected {% endif %}>{% trans 'Olib ketilgan' %}</option>
+                                                    <option value="2" {% if equ.status == 2 %} selected {% endif %}>{% trans 'Zahirada' %}</option>
+                                                    <option value="0" {% if equ.status == 0 %} selected {% endif %} >{% trans 'Yaroqsiz' %}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom03">{% trans 'Rooms Number' %}</label>
+{#                                                <input type="text" class="form-control" id="validationCustom03"#}
+{#                                                       placeholder="Rooms Number" required>#}
+                                                {% comment %} <select name="room_number" class="form-control" id="validationCustom03">
+                                                    <option selected disabled>Rooms Number</option>
+                                                    <option value="">Number1</option>
+                                                </select> {% endcomment %}
+                                                {{ form.room_number }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom01">{% trans 'schet' %}</label>
+                                                {{ form.schet }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom01">{% trans 'unit_of_measurement' %}</label>
+                                                {{ form.unit_of_measurement }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom01">{% trans 'Seria number' %}</label>
+                                                {{ form.seria_number }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom01">{% trans 'year_of_manufacture' %}</label>
+                                                {{ form.year_of_manufacture }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom01">{% trans 'Description (Extra fields)' %}</label>
+                                                {{ form.description }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="mb-3" id="new_chq">
+                                                <label type="hidden" id="total_chql" value="1" class="form-label" for="validationCustom02"></label>
+                                                <input type="hidden" value="0" id="total_chq">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <input class="btn btn-primary" type="submit" value="Submit form">
+                                    <button onclick="add()" type="button" class="btn btn-success">+</button>
+                                    <button onclick="remove()" type="button" class="btn btn-danger">-</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        function add(){
+            var new_chq_no = parseInt($('#total_chq').val())+1;
+            //var new_chql_no = parseInt($('#total_chql').val())+1;
+            var new_label="<label class='form-label' id='newl_"+new_chq_no+"'>Extra field "+new_chq_no+"</label>";
+            var new_input="<input type='text' class='form-control' id='new_"+new_chq_no+"' name='inputs' required>";
+            $('#new_chq').append(new_label);
+            $('#new_chq').append(new_input);
+            //$('#total_chql').val(new_chql_no)
+            $('#total_chq').val(new_chq_no)
+          }
+          function remove(){
+            var last_chq_no = $('#total_chq').val();
+            //var last_chql_no = $('#total_chql').val();
+            if(last_chq_no>0){
+              $('#new_'+last_chq_no).remove();
+              $('#total_chq').val(last_chq_no-1);
+              $('#newl_'+last_chq_no).remove();
+              $('#total_chql').val(last_chq_no-1);
+            }
+          }
+    </script>
+    {% include 'layouts/footer.html' %}
+{% endblock %}

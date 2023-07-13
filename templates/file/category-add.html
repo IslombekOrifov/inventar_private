@@ -1,0 +1,121 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block button %}
+    <div class="d-none d-sm-block">
+        <div class="dropdown dropdown-topbar pt-3 mt-1 d-inline-block">
+            <a class="btn btn-primary waves-effect waves-light" href="{% url 'admin-categories' %}">{% trans 'Return' %}</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id="layout-wrapper">
+        <div class="main-content">
+            <div class="page-content">
+                {% if request.user.groups.first.max_limit_category > category_count %}
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-6 col-xl-6" style="margin-left: 250px">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">{% trans 'Category name' %} UZ</h4>
+                                    <form class="custom-validation" method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="mb-1">
+                                            <input name="name_en" type="text" class="form-control" required
+                                                   data-parsley-equalto="#pass2"
+                                                   placeholder="category"/>
+                                        </div>
+                                        <h4 class="card-title">{% trans 'Category name' %} RU</h4>
+                                        <div class="">
+                                            <input name="name_ru" type="text" class="form-control" required
+                                                   data-parsley-equalto="#pass2"
+                                                   placeholder="категория"/>
+                                        </div>
+                                        <h4 class="card-title mt-2">{% trans 'Category name' %} EN</h4>
+                                        <div class="mt-0">
+                                            <input name="name_uz" type="text" class="form-control" required
+                                                   data-parsley-equalto="#pass2"
+                                                   placeholder="kategoriya"/>
+                                        </div>
+                                        <p style="margin-bottom: 8px" class="title-project">{% trans 'Deploy the Project File' %}</p>
+
+                                        <input style="width: 100%; padding: 6px 12px; margin-bottom: 16px;" accept="image/*" class="form-control" type="file" id="user-file"
+                                               name="image" required>
+
+                                        <div class="mb-0">
+                                            <div>
+                                                <button type="submit"
+                                                        class="btn btn-primary waves-effect waves-light me-1">
+                                                    {% trans 'Submit' %}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-6 col-xl-6" style="margin-left: 250px">
+                            <div class="card">
+                                <div class="card-body">
+                                    {% if error %}
+                                    <p style="color: red;">{{ error }}</p>
+                                    {% endif %}
+                                    <form action="{% url 'create-by-excel' %}" class="custom-validation" method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        
+                                        <p style="margin-bottom: 8px" class="title-project">
+                                            {% trans "Bu qismda ma'lumotlarni excel faylda yuklashingiz mumkin. Quyidagi havoladan maxsus formatdagi faylni yuklab oling va uni malumotlar bilan toldirib pastdagi yacheykaga biriktiring!" %} 
+                                            <br><a href="{% static 'excel-files/category_add.xlsx' %}" download>{% trans "Faylni olish" %}</a> 
+                                        </p>
+                                        
+                                        <input style="width: 100%; padding: 6px 12px; margin-bottom: 16px;" class="form-control" type="file" id="user-file"
+                                               name="excel_file_cat" required>
+
+                                        <div class="mb-0">
+                                            <div>
+                                                <button type="submit"
+                                                        class="btn btn-primary waves-effect waves-light me-1">
+                                                    {% trans 'Submit' %}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-8 col-md-10 col-6 offset-5">
+                            <div class="page-title-box">
+                                <h3 style="color:yellow;">Diqqat!</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-8 col-md-10 col-6 offset-2">
+                            <div class="card" style="text-align: center;">
+                                <img src="{% static 'img/warning.png' %}">
+                                <p>Sizning limitingiz cheklanganligi tufayli boshqa ma'lumot qo'sha olmaysiz!</p>
+                                <p>Yana ma'lumot qo'shish uchun administrator bilan bog'laning!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+    {% endblock %}

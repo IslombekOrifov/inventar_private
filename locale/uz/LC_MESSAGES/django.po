@@ -1,0 +1,854 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-28 12:43+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\Inventar\settings.py:93
+msgid "English"
+msgstr "🇬🇧 Ingliz tili"
+
+#: .\Inventar\settings.py:94
+msgid "Russian"
+msgstr "🇷🇺 Rus tili"
+
+#: .\Inventar\settings.py:95
+msgid "Uzbek"
+msgstr "🇺🇿 O'zbek tili"
+
+#: .\admiin\forms.py:46 .\templates\base2.html:36
+#: .\templates\file\product-detail.html:105
+#: .\templates\file\product-detail.html:204
+#: .\templates\file\product_update.html:129
+#: .\templates\file\room_devices.html:88 .\templates\index.html:89
+#: .\templates\search-results.html:76 .\templates\unknown_devices.html:78
+msgid "Ishlatilmoqda"
+msgstr "Ishlatilmoqda"
+
+#: .\admiin\forms.py:47 .\templates\base2.html:66
+#: .\templates\file\product-detail.html:102
+#: .\templates\file\product-detail.html:205
+#: .\templates\file\product_update.html:130
+#: .\templates\file\room_devices.html:94 .\templates\index.html:95
+#: .\templates\search-results.html:82 .\templates\unknown_devices.html:84
+msgid "Olib ketilgan"
+msgstr "Olib ketilgan"
+
+#: .\admiin\forms.py:48 .\templates\base2.html:81
+#: .\templates\file\product-detail.html:111
+#: .\templates\file\product-detail.html:207
+#: .\templates\file\product_update.html:132
+#: .\templates\file\room_devices.html:97 .\templates\index.html:98
+#: .\templates\search-results.html:85 .\templates\unknown_devices.html:87
+msgid "Yaroqsiz"
+msgstr "Yaroqsiz"
+
+#: .\admiin\forms.py:49 .\templates\base2.html:51
+#: .\templates\file\product-detail.html:108
+#: .\templates\file\product-detail.html:206
+#: .\templates\file\product_update.html:131
+#: .\templates\file\room_devices.html:91 .\templates\index.html:92
+#: .\templates\search-results.html:79 .\templates\unknown_devices.html:81
+msgid "Zahirada"
+msgstr "Zahirada"
+
+#: .\admiin\views.py:304
+msgid "Faylda bazada mavjud inventar raqamga ega jihoz mavjud!"
+msgstr "Faylda bazada mavjud inventar raqamga ega jihoz mavjud!"
+
+#: .\index\apps.py:8
+msgid "Index"
+msgstr "Indeks"
+
+#: .\index\models.py:10
+msgid "rooms"
+msgstr "xonalar"
+
+#: .\index\models.py:11
+msgid "floor"
+msgstr "qavat"
+
+#: .\index\models.py:22 .\index\models.py:32 .\index\models.py:51
+#: .\templates\file\product-detail.html:53 .\templates\file\product_add.html:43
+#: .\templates\file\product_update.html:47
+msgid "name"
+msgstr "nom"
+
+#: .\index\models.py:23 .\index\models.py:34
+msgid "image"
+msgstr "rasm"
+
+#: .\index\models.py:33 .\index\models.py:44 .\index\models.py:61
+msgid "description"
+msgstr "tasvir"
+
+#: .\index\models.py:43
+msgid "fullname"
+msgstr "FIO"
+
+#: .\index\models.py:52 .\templates\file\product-detail.html:180
+#: .\templates\file\product_add.html:121
+#: .\templates\file\product_update.html:153
+msgid "schet"
+msgstr ""
+
+#: .\index\models.py:53
+msgid "category_id"
+msgstr "Kategoriya"
+
+#: .\index\models.py:54
+msgid "room_number"
+msgstr "Xona raqami"
+
+#: .\index\models.py:55
+msgid "inventar_number"
+msgstr "Inventar raqami"
+
+#: .\index\models.py:56
+msgid "model_id"
+msgstr "Modeli"
+
+#: .\index\models.py:57
+msgid "responsible_id"
+msgstr "Javobgar shaxs"
+
+#: .\index\models.py:58
+msgid "seria_number"
+msgstr "Seriya raqami"
+
+#: .\index\models.py:59
+msgid "images"
+msgstr "Rasmlar"
+
+#: .\index\models.py:62 .\templates\file\product-detail.html:79
+#: .\templates\file\product_add.html:108
+#: .\templates\file\product_update.html:179
+msgid "year_of_manufacture"
+msgstr "Ishlab chiqarilgan yil"
+
+#: .\index\models.py:63 .\templates\file\product-detail.html:188
+#: .\templates\file\product_add.html:136
+#: .\templates\file\product_update.html:159
+msgid "unit_of_measurement"
+msgstr "o'lchov birligi"
+
+#: .\index\models.py:64
+msgid "qr_code"
+msgstr "QR kod"
+
+#: .\index\models.py:65
+msgid "responsible_person"
+msgstr "Javobgar shaxs"
+
+#: .\index\models.py:66
+msgid "created_at"
+msgstr "Hosil qilingan vaqti"
+
+#: .\index\models.py:67
+msgid "updated_at"
+msgstr "Yangilangan vaqti"
+
+#: .\templates\base2.html:6 .\templates\base2.html:9 .\templates\base2.html:10
+msgid "Dashboard"
+msgstr "Boshqaruv paneli"
+
+#: .\templates\base2.html:8 .\templates\file\product-detail.html:19
+#: .\templates\file\product-detail.html:33
+msgid "Inventar"
+msgstr "Inventar raqami"
+
+#: .\templates\base2.html:18 .\templates\base2.html:22
+msgid "Test case"
+msgstr "Sinovda"
+
+#: .\templates\base2.html:39 .\templates\base2.html:54
+#: .\templates\base2.html:69 .\templates\base2.html:84
+msgid "From previous period"
+msgstr "Oldingi davrdan buyon"
+
+#: .\templates\card.html:8 .\templates\card.html:26
+#: .\templates\file\category_edit.html:24
+#: .\templates\file\product-detail.html:21
+#: .\templates\file\product_update.html:97 .\templates\layouts\sidebar.html:40
+msgid "Category"
+msgstr "Kategoriya"
+
+#: .\templates\card.html:31 .\templates\file\category-add.html:24
+#: .\templates\file\category-add.html:32 .\templates\file\category-add.html:38
+#: .\templates\search-results.html:19
+msgid "Category name"
+msgstr "Kategoriya nomi"
+
+#: .\templates\card.html:32
+msgid "Category image"
+msgstr "Kategoriya rasmi"
+
+#: .\templates\card.html:33 .\templates\file\product-detail.html:83
+#: .\templates\models.html:34
+msgid "Created at"
+msgstr "Hosil qilingan vaqti"
+
+#: .\templates\card.html:34 .\templates\file\room_devices.html:50
+#: .\templates\index.html:52 .\templates\models.html:37
+#: .\templates\search-results.html:40 .\templates\unknown_devices.html:41
+msgid "Actions"
+msgstr "Harakatlar"
+
+#: .\templates\catalog_category.html:9
+msgid "Add devices"
+msgstr "Jihozlar qo'shing"
+
+#: .\templates\catalog_category.html:25 .\templates\layouts\sidebar.html:16
+msgid "Equipments"
+msgstr "Jihozlar"
+
+#: .\templates\file\category-add.html:8 .\templates\file\category_edit.html:8
+#: .\templates\file\model_add.html:8 .\templates\file\models_edit.html:8
+#: .\templates\file\product-detail.html:226
+#: .\templates\file\product-detail.html:229 .\templates\file\product_add.html:8
+#: .\templates\file\product_add_excel.html:8
+#: .\templates\file\product_update.html:9
+#: .\templates\file\product_update.html:11
+#: .\templates\file\responsible-edit.html:7
+#: .\templates\file\responsible_add.html:8 .\templates\file\room_devices.html:9
+#: .\templates\rooms_catalog_floor.html:7
+msgid "Return"
+msgstr "Ortga"
+
+#: .\templates\file\category-add.html:44 .\templates\file\model_add.html:37
+msgid "Deploy the Project File"
+msgstr "Loyiha faylini yuklang"
+
+#: .\templates\file\category-add.html:53 .\templates\file\category-add.html:85
+#: .\templates\file\category_edit.html:30 .\templates\file\model_add.html:44
+#: .\templates\file\model_add.html:73 .\templates\file\models_edit.html:32
+#: .\templates\file\product_add_excel.html:36
+#: .\templates\file\responsible-edit.html:30
+#: .\templates\file\responsible_add.html:70
+#: .\templates\file\responsible_add.html:101 .\templates\file\rooms_add.html:25
+#: .\templates\registration\resend_activation_form.html:10
+msgid "Submit"
+msgstr "Yuborish"
+
+#: .\templates\file\category-add.html:74 .\templates\file\model_add.html:64
+#: .\templates\file\product_add_excel.html:27
+#: .\templates\file\responsible_add.html:90
+msgid ""
+"Bu qismda ma'lumotlarni excel faylda yuklashingiz mumkin. Quyidagi havoladan "
+"maxsus formatdagi faylni yuklab oling va uni malumotlar bilan toldirib "
+"pastdagi yacheykaga biriktiring!"
+msgstr ""
+"Bu qismda ma'lumotlarni excel faylda yuklashingiz mumkin. Quyidagi havoladan "
+"maxsus formatdagi faylni yuklab oling va uni malumotlar bilan toldirib "
+"pastdagi yacheykaga biriktiring!"
+
+#: .\templates\file\category-add.html:75 .\templates\file\model_add.html:65
+#: .\templates\file\product_add_excel.html:28
+#: .\templates\file\responsible_add.html:91
+msgid "Faylni olish"
+msgstr "Faylni olish"
+
+#: .\templates\file\model_add.html:24 .\templates\file\model_add.html:28
+#: .\templates\file\model_add.html:60
+msgid "Model Name"
+msgstr "Model nomi"
+
+#: .\templates\file\model_add.html:31 .\templates\file\model_add.html:33
+#: .\templates\responsible_person.html:34
+msgid "Description"
+msgstr "Tasvir"
+
+#: .\templates\file\models_edit.html:24
+msgid "Edit model"
+msgstr "Modelni tahrirlash"
+
+#: .\templates\file\product-detail.html:17
+msgid "Inventar details"
+msgstr "Inventar tafsilotlari"
+
+#: .\templates\file\product-detail.html:23 .\templates\layouts\sidebar.html:46
+msgid "Unknown Devices"
+msgstr "Noma'lum qurilmalar"
+
+#: .\templates\file\product-detail.html:25
+msgid "Product"
+msgstr "Mahsulot"
+
+#: .\templates\file\product-detail.html:37
+msgid "Item reserved"
+msgstr "Buyum zahiraga olingan"
+
+#: .\templates\file\product-detail.html:57
+msgid "Number of Room"
+msgstr "Xona raqami"
+
+#: .\templates\file\product-detail.html:61
+msgid "Model of Inventar"
+msgstr "Inventar modeli"
+
+#: .\templates\file\product-detail.html:65
+msgid "Responsible person"
+msgstr "Javobgar shaxs"
+
+#: .\templates\file\product-detail.html:69 .\templates\file\product_add.html:93
+#: .\templates\file\product_update.html:173
+msgid "Seria number"
+msgstr "Seriya raqami"
+
+#: .\templates\file\product-detail.html:74
+msgid "Temporary responsible person"
+msgstr "Muvaqqat Javobgar shaxs"
+
+#: .\templates\file\product-detail.html:87
+msgid "Updated at"
+msgstr "Yangilangan vaqti"
+
+#: .\templates\file\product-detail.html:162
+#: .\templates\file\product-detail.html:173
+msgid "Download"
+msgstr "Yuklash"
+
+#: .\templates\file\product-detail.html:202
+msgid "Change Status"
+msgstr "Statusni o'zgartirish"
+
+#: .\templates\file\product-detail.html:213
+msgid "Add responsible person (optional)"
+msgstr "Mas'ul shaxsni qo'shish (ixtiyoriy)"
+
+#: .\templates\file\product_add.html:22
+msgid "Add new one"
+msgstr "Yangi qo'shish"
+
+#: .\templates\file\product_add.html:39 .\templates\file\product_update.html:43
+msgid "Ma'lumotlarni tekshirib qaytadan jo'nating!"
+msgstr "Ma'lumotlarni tekshirib qaytadan jo'nating!"
+
+#: .\templates\file\product_add.html:56 .\templates\file\product_update.html:60
+msgid "Inventar Number"
+msgstr "Inventar raqami"
+
+#: .\templates\file\product_add.html:65 .\templates\file\product_update.html:69
+msgid "Model"
+msgstr "Model"
+
+#: .\templates\file\product_add.html:80 .\templates\file\product_update.html:84
+#: .\templates\layouts\sidebar.html:22 .\templates\responsible_person.html:8
+msgid "Responsible Person"
+msgstr "Javobgar shaxs"
+
+#: .\templates\file\product_add.html:149
+#: .\templates\file\product_update.html:138 .\templates\file\rooms_add.html:13
+#: .\templates\file\rooms_add.html:17
+msgid "Rooms Number"
+msgstr "Xona raqami"
+
+#: .\templates\file\product_add.html:164
+#: .\templates\file\product_update.html:112
+msgid "Touch image"
+msgstr "Rasm yuklash"
+
+#: .\templates\file\product_update.html:26
+msgid "Update device"
+msgstr "Jihozni tahrirlash"
+
+#: .\templates\file\product_update.html:127
+msgid "Status"
+msgstr "Status"
+
+#: .\templates\file\product_update.html:167
+msgid "Responsible Person Outside"
+msgstr "Tashqi mas'ul shaxs"
+
+#: .\templates\file\product_update.html:187
+msgid "Description (Extra fields)"
+msgstr "Tavsif (qo'shimcha maydonlar)"
+
+#: .\templates\file\responsible-edit.html:22
+msgid "Edit responsible person"
+msgstr "Javobgar shaxs"
+
+#: .\templates\file\responsible_add.html:24
+msgid "Fill in English"
+msgstr "Ingliz tilida to'ldiring"
+
+#: .\templates\file\responsible_add.html:33
+msgid "Description in English"
+msgstr "Tavsif Ingliz tilida"
+
+#: .\templates\file\responsible_add.html:39
+msgid "Fill in Russian"
+msgstr "Rus tilida to'ldiring"
+
+#: .\templates\file\responsible_add.html:46
+msgid "Description in Russian"
+msgstr "Tavsif Rus tilida"
+
+#: .\templates\file\responsible_add.html:52
+msgid "Fill in Uzbek"
+msgstr "Oʻzbekcha toʻldiring"
+
+#: .\templates\file\responsible_add.html:59
+msgid "Description in Uzbek"
+msgstr "Tavsif Oʻzbek tilida"
+
+#: .\templates\file\room_devices.html:29 .\templates\index.html:31
+#: .\templates\search-results.html:22 .\templates\unknown_devices.html:20
+msgid "Product name"
+msgstr "Mahsulot nomi"
+
+#: .\templates\file\room_devices.html:32 .\templates\index.html:34
+#: .\templates\search-results.html:25 .\templates\unknown_devices.html:23
+msgid "Product image"
+msgstr "Mahsulot rasmi"
+
+#: .\templates\file\room_devices.html:35 .\templates\index.html:37
+#: .\templates\search-results.html:28 .\templates\unknown_devices.html:26
+msgid "Product inventar number"
+msgstr "Inventar raqami"
+
+#: .\templates\file\room_devices.html:38 .\templates\index.html:40
+#: .\templates\search-results.html:31 .\templates\unknown_devices.html:29
+msgid "Product Responsible person"
+msgstr "Javobgar shaxs"
+
+#: .\templates\file\room_devices.html:41 .\templates\index.html:43
+#: .\templates\unknown_devices.html:32
+msgid "Product Created at"
+msgstr "Hosil qilingan vaqti"
+
+#: .\templates\file\room_devices.html:44 .\templates\index.html:46
+#: .\templates\search-results.html:34 .\templates\unknown_devices.html:35
+msgid "Product status"
+msgstr "Status"
+
+#: .\templates\file\room_devices.html:47 .\templates\index.html:49
+#: .\templates\search-results.html:37 .\templates\unknown_devices.html:38
+msgid "Product Rooms"
+msgstr "Xona raqami"
+
+#: .\templates\file\rooms_add.html:20
+msgid "Floor Number"
+msgstr "Qavat raqami"
+
+#: .\templates\index.html:10
+msgid "Add Product"
+msgstr "Mahsulot qo'shish"
+
+#: .\templates\layouts\base.html:8 .\templates\pages-404.html:43
+#: .\templates\pages-500.html:43
+#: .\templates\registration\registration_base.html:8
+msgid "INVENTARIZATSIYA"
+msgstr "INVENTARIZATSIYA"
+
+#: .\templates\layouts\base.html:83
+msgid "Search"
+msgstr "Qidiruv"
+
+#: .\templates\layouts\base.html:272
+msgid "Profile"
+msgstr "Profil"
+
+#: .\templates\layouts\base.html:275
+msgid "Log out"
+msgstr "Chiqish"
+
+#: .\templates\layouts\base.html:288
+msgid "Settings"
+msgstr "Sozlamalar"
+
+#: .\templates\layouts\base.html:296
+msgid "Choose Layouts"
+msgstr "Layouts-ni tanlang"
+
+#: .\templates\layouts\base.html:305
+msgid "Light Mode"
+msgstr "Yorug' rejim"
+
+#: .\templates\layouts\base.html:314
+msgid "Dark Mode"
+msgstr "Qorong'i rejim"
+
+#: .\templates\layouts\footer.html:8 .\templates\pages-404.html:43
+#: .\templates\pages-500.html:43 .\templates\registration\login.html:63
+msgid "Created by Sanjarbek Usmonov"
+msgstr "Muallif: Sanjarbek Usmonov"
+
+#: .\templates\layouts\sidebar.html:12
+msgid "Main"
+msgstr "Asosiy"
+
+#: .\templates\layouts\sidebar.html:28 .\templates\rooms_catalog.html:7
+msgid "Rooms"
+msgstr "Xonalar"
+
+#: .\templates\layouts\sidebar.html:34 .\templates\models.html:8
+#: .\templates\models.html:22
+msgid "Models"
+msgstr "Jihoz modellari"
+
+#: .\templates\models.html:28
+msgid "Model name"
+msgstr "Model nomi"
+
+#: .\templates\models.html:31
+msgid "Model image"
+msgstr "Model rasmi"
+
+#: .\templates\pages-404.html:34
+msgid "Sorry, page not found"
+msgstr "Kechirasiz, sahifa topilmadi"
+
+#: .\templates\pages-404.html:37 .\templates\pages-500.html:37
+msgid "Back to Dashboard"
+msgstr "Boshqaruv paneli sahifasiga qaytish"
+
+#: .\templates\pages-500.html:34
+msgid "Internal server error"
+msgstr "Serverdagi ichki xatolik"
+
+#: .\templates\registration\activate.html:4
+msgid "Activation Failure"
+msgstr ""
+
+#: .\templates\registration\activate.html:7
+msgid "Account activation failed."
+msgstr ""
+
+#: .\templates\registration\activation_complete.html:4
+#: .\templates\registration\activation_complete_admin_pending.html:4
+msgid "Account Activated"
+msgstr ""
+
+#: .\templates\registration\activation_complete.html:8
+#: .\templates\registration\activation_complete_admin_pending.html:8
+msgid "Your account is now activated."
+msgstr ""
+
+#: .\templates\registration\activation_complete.html:10
+msgid "You can log in."
+msgstr ""
+
+#: .\templates\registration\activation_complete_admin_pending.html:10
+msgid "Once a site administrator activates your account you can login."
+msgstr ""
+
+#: .\templates\registration\activation_email.html:6
+#: .\templates\registration\admin_approve_email.html:6
+msgid "registration"
+msgstr ""
+
+#: .\templates\registration\activation_email.html:11
+#, python-format
+msgid ""
+"\n"
+"    You (or someone pretending to be you) have asked to register an account "
+"at\n"
+"    %(site_name)s.  If this wasn't you, please ignore this email\n"
+"    and your address will be removed from our records.\n"
+"    "
+msgstr ""
+
+#: .\templates\registration\activation_email.html:18
+#, python-format
+msgid ""
+"\n"
+"    To activate this account, please click the following link within the "
+"next\n"
+"    %(expiration_days)s days:\n"
+"    "
+msgstr ""
+
+#: .\templates\registration\activation_email.html:30
+#: .\templates\registration\admin_approve_email.html:23
+#, python-format
+msgid ""
+"\n"
+"    Sincerely,\n"
+"    %(site_name)s Management\n"
+"    "
+msgstr ""
+
+#: .\templates\registration\activation_email.txt:2
+#, python-format
+msgid ""
+"\n"
+"You (or someone pretending to be you) have asked to register an account at\n"
+"%(site_name)s.  If this wasn't you, please ignore this email\n"
+"and your address will be removed from our records.\n"
+msgstr ""
+
+#: .\templates\registration\activation_email.txt:7
+#, python-format
+msgid ""
+"\n"
+"To activate this account, please click the following link within the next\n"
+"%(expiration_days)s days:\n"
+msgstr ""
+
+#: .\templates\registration\activation_email.txt:14
+#, python-format
+msgid ""
+"\n"
+"Sincerely,\n"
+"%(site_name)s Management\n"
+msgstr ""
+
+#: .\templates\registration\activation_email_subject.txt:1
+#: .\templates\registration\admin_approve_complete_email_subject.txt:1
+msgid "Account activation on"
+msgstr ""
+
+#: .\templates\registration\admin_approve.html:4
+msgid "Approval Failure"
+msgstr ""
+
+#: .\templates\registration\admin_approve.html:7
+msgid "Account Approval failed."
+msgstr ""
+
+#: .\templates\registration\admin_approve_complete.html:4
+msgid "Account Approved"
+msgstr ""
+
+#: .\templates\registration\admin_approve_complete.html:8
+msgid "The user's account is now approved."
+msgstr ""
+
+#: .\templates\registration\admin_approve_complete_email.html:6
+msgid "admin approval"
+msgstr ""
+
+#: .\templates\registration\admin_approve_complete_email.html:11
+msgid ""
+"\n"
+"    Your account is now approved. You can \n"
+"    "
+msgstr ""
+
+#: .\templates\registration\admin_approve_complete_email.html:14
+msgid "log in."
+msgstr ""
+
+#: .\templates\registration\admin_approve_complete_email.txt:2
+msgid ""
+"\n"
+"Your account is now approved. You can log in using the following link\n"
+msgstr ""
+
+#: .\templates\registration\admin_approve_email.html:11
+#, python-format
+msgid ""
+"\n"
+"    The following user (%(user)s) has asked to register an account at\n"
+"    %(site_name)s.\n"
+"    "
+msgstr ""
+
+#: .\templates\registration\admin_approve_email.html:17
+msgid ""
+"\n"
+"    To approve this, please\n"
+"    "
+msgstr ""
+
+#: .\templates\registration\admin_approve_email.html:20
+msgid "click here"
+msgstr ""
+
+#: .\templates\registration\admin_approve_email.txt:2
+#, python-format
+msgid ""
+"\n"
+"The following user (%(user)s) has asked to register an account at\n"
+"%(site_name)s.\n"
+msgstr ""
+
+#: .\templates\registration\admin_approve_email.txt:6
+msgid ""
+"\n"
+"To approve this, please click the following link.\n"
+msgstr ""
+
+#: .\templates\registration\admin_approve_email_subject.txt:1
+msgid "Account approval on"
+msgstr ""
+
+#: .\templates\registration\login.html:23
+msgid "Welcome Back!"
+msgstr "Xush kelibsiz!"
+
+#: .\templates\registration\login.html:24
+msgid "Sign in to continue to Inventar"
+msgstr "Inventar xizmatiga o'tish uchun tizimga kiring"
+
+#: .\templates\registration\login.html:39
+msgid "Remember me"
+msgstr "Meni eslab qol"
+
+#: .\templates\registration\login.html:45
+msgid "Log In"
+msgstr "Kirish"
+
+#: .\templates\registration\login.html:52
+msgid "Forgot your password?"
+msgstr "Parolni esdan chiqardingizmi?"
+
+#: .\templates\registration\login.html:63
+msgid "The National Office of Innovations"
+msgstr "Innovatsiyalar Milliy Ofisi"
+
+#: .\templates\registration\logout.html:4
+msgid "Logged out"
+msgstr "Hisobdan chiqdi"
+
+#: .\templates\registration\logout.html:7
+msgid "Successfully logged out"
+msgstr "Hisobdan muvaffaqiyatli chiqdi"
+
+#: .\templates\registration\password_change_done.html:4
+msgid "Password changed"
+msgstr ""
+
+#: .\templates\registration\password_change_done.html:7
+msgid "Password successfully changed!"
+msgstr ""
+
+#: .\templates\registration\password_change_form.html:4
+#: .\templates\registration\password_change_form.html:10
+msgid "Change password"
+msgstr ""
+
+#: .\templates\registration\password_reset_complete.html:4
+msgid "Password reset complete"
+msgstr ""
+
+#: .\templates\registration\password_reset_complete.html:8
+msgid "Your password has been reset!"
+msgstr ""
+
+#: .\templates\registration\password_reset_complete.html:9
+#, python-format
+msgid "You may now <a href=\"%(login_url)s\">log in</a>"
+msgstr ""
+
+#: .\templates\registration\password_reset_confirm.html:10
+msgid "Confirm password reset"
+msgstr ""
+
+#: .\templates\registration\password_reset_confirm.html:14
+msgid "Enter your new password below to reset your password:"
+msgstr ""
+
+#: .\templates\registration\password_reset_confirm.html:18
+msgid "Set password"
+msgstr ""
+
+#: .\templates\registration\password_reset_done.html:4
+msgid "Password reset"
+msgstr ""
+
+#: .\templates\registration\password_reset_done.html:8
+msgid ""
+"\n"
+"    We have sent you an email with a link to reset your password. Please "
+"check\n"
+"    your email and click the link to continue.\n"
+"    "
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:3
+msgid "Greetings"
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:5
+#, python-format
+msgid ""
+"\n"
+"You are receiving this email because you (or someone pretending to be you)\n"
+"requested that your password be reset on the %(domain)s site. If you do not\n"
+"wish to reset your password, please ignore this message.\n"
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:11
+msgid ""
+"\n"
+"To reset your password, please click the following link, or copy and paste "
+"it\n"
+"into your web browser:\n"
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:20
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:23
+msgid "Best regards"
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:24
+msgid "Management"
+msgstr ""
+
+#: .\templates\registration\password_reset_form.html:4
+#: .\templates\registration\password_reset_form.html:15
+msgid "Reset password"
+msgstr ""
+
+#: .\templates\registration\password_reset_form.html:8
+msgid ""
+"\n"
+"    Forgot your password? Enter your email in the form below and we'll send "
+"you instructions for creating a new one.\n"
+"    "
+msgstr ""
+
+#: .\templates\registration\registration_closed.html:4
+msgid "Registration is closed"
+msgstr ""
+
+#: .\templates\registration\registration_closed.html:7
+msgid "Sorry, but registration is closed at this moment. Come back later."
+msgstr ""
+
+#: .\templates\registration\registration_complete.html:4
+msgid "Activation email sent"
+msgstr ""
+
+#: .\templates\registration\registration_complete.html:7
+msgid "Please check your email to complete the registration process."
+msgstr ""
+
+#: .\templates\registration\resend_activation_complete.html:4
+msgid "Account Activation Resent"
+msgstr ""
+
+#: .\templates\registration\resend_activation_complete.html:8
+#, python-format
+msgid ""
+"\n"
+"  We have sent an email to %(email)s with further instructions.\n"
+"  "
+msgstr ""
+
+#: .\templates\registration\resend_activation_form.html:4
+msgid "Resend Activation Email"
+msgstr ""
+
+#: .\templates\responsible_person.html:32
+msgid "Fullname"
+msgstr "FIO"

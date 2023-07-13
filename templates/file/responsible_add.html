@@ -1,0 +1,108 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block button %}
+    <div class="d-none d-sm-block">
+        <div class="dropdown dropdown-topbar pt-3 mt-1 d-inline-block">
+            <a class="btn btn-primary waves-effect waves-light" href="{% if depart_id %}{% url 'admin-responsibles' depart_id %}{% else %}{% url 'department-list' %}{% endif %}">{% trans 'Return' %}</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id="layout-wrapper">
+        <div class="main-content">
+            <div class="page-content">
+                {% if request.user.groups.first.max_limit_responsible > res_count %}
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-6 col-xl-6" style="margin-left: 250px">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form class="custom-validation" action="#" method="post">
+                                        {% csrf_token %}
+                                        <div class="mt-3 mb-4">
+                                            <label class="form-label">{% trans 'Email' %}</label>
+                                            <input type="email" class="form-control" name="email" required
+                                                   placeholder="Email"/>
+                                        </div>
+                                        <div class="mt-3 mb-4">
+                                            <label class="form-label">{% trans 'First name' %}</label>
+                                            <input type="text" class="form-control" name="first_name" required
+                                                   placeholder="First name"/>
+                                        </div>
+                                        <div class="mt-3 mb-4">
+                                            <label class="form-label">{% trans 'Last name' %}</label>
+                                            <input type="text" class="form-control" name="last_name" required
+                                                   placeholder="Last name"/>
+                                        </div>
+                                        <div class="mt-3 mb-4">
+                                            <label class="form-label">{% trans 'Status' %}</label>
+                                            {% render_field form.status_member class="form-control" %}
+
+                                        </div>
+                                        <div class="mt-3 mb-4">
+                                            {% if not depart_id %}
+                                            <label class="form-label">{% trans 'Department' %}</label>
+                                            {% render_field form.department class="form-control" %}
+                                            {% endif %}
+                                        </div>
+                                        <div class="mt-3 mb-4">
+                                            <label class="form-label">{% trans 'Password' %}</label>
+                                            <input type="password" class="form-control" name="password" required
+                                                   placeholder="Enter new password"/>
+                                        </div>
+                                        <div class="mt-3 mb-4">
+                                            <label class="form-label">{% trans 'Repeat password' %}</label>
+                                            <input type="password" class="form-control" name="password2" required
+                                                   placeholder="repeat new password"/>
+                                        </div>
+                                        <div class="mt-1">
+                                            <label class="form-label">{% trans 'Description' %}</label>
+                                            <div>
+                                            <textarea required class="form-control" name="description" placeholder=""
+                                                      rows="5"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-0">
+                                            <div>
+                                                <button type="submit"
+                                                        class="btn btn-primary waves-effect waves-light me-1">
+                                                        {% trans 'Submit' %}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-8 col-md-10 col-6 offset-5">
+                            <div class="page-title-box">
+                                <h3 style="color:yellow;">Diqqat!</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-8 col-md-10 col-6 offset-2">
+                            <div class="card" style="text-align: center;">
+                                <img src="{% static 'img/warning.png' %}">
+                                <p>Sizning limitingiz cheklanganligi tufayli boshqa ma'lumot qo'sha olmaysiz!</p>
+                                <p>Yana ma'lumot qo'shish uchun administrator bilan bog'laning!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

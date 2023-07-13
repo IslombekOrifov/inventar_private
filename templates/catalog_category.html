@@ -1,0 +1,113 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block button %}
+{% if request.user.is_superuser == True %}
+<div class="d-none d-sm-block">
+    <div class="dropdown dropdown-topbar pt-3 mt-1 d-inline-block">
+        {% if request.user.groups.first.max_limit_product > product_count %}
+        <a class="btn btn-primary waves-effect waves-light" href="{% url 'equipment-create-excel' %}">{% trans 'Add devices' %}</a>
+        {% else %}
+        <a type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl">{% trans 'Add devices' %}</a>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="page-title-box">
+                            <h4>{% trans 'Equipments' %}</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+                {% include 'base2.html' with inuse_count=query_count taken_count=query_count_tw query_count_ir=query_count_ir query_count_in=query_count_in %}
+
+                <div class="row">
+                    {% for m in query %}
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card directory-card">
+                                <div> 
+                                    
+                                    <div class="directory-bg text-center">
+                                        <div class="directory-overlay">
+                                            <i style="font-size: 20px; padding-left: 10%; padding-right: 10%; box-shadow: 0.5px 0.5px 1px 1px #161a22 inset; border-radius: 5px;">{{ m.count }}</i>
+                                            <a href="{% url 'base-view' pk=m.pk %}">
+                                                <img class="rounded-circle avatar-lg img-thumbnail"
+                                                     src="
+                                                     {% if m.image %}
+                                                     {{ m.image.url }}
+                                                     {% else %}
+                                                     {% static 'images/devices-sketch-image.jpg' %}
+                                                     {% endif %}
+                                                     " alt="Generic placeholder image">
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="directory-content text-center p-4">
+                                        <h5 class="font-size-16">{{ m.name }}</h5>
+                                    </div>
+{#                                    <td class="edit"><a href="{% url 'category-edit' pk=m.pk %}"><i#}
+{#                                            class="fa fa-pencil"></i></a></td>#}
+{#                                    <td class="edit delete-btn" id="delete-btn"><a href="#"#}
+{#                                                                                   onclick="confirm_category_delete('{{ m.pk }}');"><i#}
+{#                                            class="fa fa-trash"></i></a></td>#}
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                {% if query.has_other_pages %}
+                <nav aria-label="...">
+                    <ul class="pagination justify-content-center">
+                        {% if query.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ query.previous_page_number }}" tabindex="-1">&laquo;</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="?page={{ query.previous_page_number }}">{{ query.previous_page_number }}</a></li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">&laquo;</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">x</a></li>
+                        {% endif %}
+                        
+                        <li class="page-item active">
+                            <a class="page-link" href="#">{{query.number}} <span class="sr-only">(current)</span></a>
+                        </li>
+
+                        {% if query.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ query.next_page_number  }}">{{ query.next_page_number  }}</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ query.next_page_number  }}">&raquo;</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item"><a class="page-link" href="#">x</a></li>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">&raquo;</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+
+                <br>
+                {% endif %}
+            </div>
+        </div>
+        {% include 'layouts/footer.html' %}
+    </div>
+{% endblock %}
+<!-- end main content-->

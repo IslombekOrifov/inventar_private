@@ -1,0 +1,91 @@
+{% load i18n %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="page-title-box">
+                <h4>{% trans 'Dashboard' %}</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">{% trans 'Inventar' %}</a></li>
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">{% trans 'Dashboard' %}</a></li>
+                    <li class="breadcrumb-item active">{% trans 'Dashboard' %}</li>
+                    <li class="breadcrumb-item active">{{ name }}</li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="state-information d-none d-sm-block">
+                <div class="state-graph">
+                    <div id="header-chart-1"></div>
+                    <div class="info">{% trans 'Test case' %}</div>
+                </div>
+                <div class="state-graph">
+                    <div id="header-chart-2"></div>
+                    <div class="info">{% trans 'Test case' %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-3 col-sm-6">
+            <div class="card mini-stat bg-primary">
+                <div class="card-body mini-stat-img">
+                    <div class="mini-stat-icon">
+                        <i class="mdi mdi-briefcase-check float-end"></i>
+                    </div>
+                    <div class="text-white">
+                        <h6 class="text-uppercase mb-3 font-size-16 text-white">{% trans 'Ishlatilmoqda' %}</h6>
+                        <h2 class="mb-4 text-white">{{ inuse_count }}</h2>
+                        <span class="badge bg-success"> -12% </span> <span
+                            class="ms-2">{% trans 'From previous period' %}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+            <div class="card mini-stat bg-primary">
+                <div class="card-body mini-stat-img">
+                    <div class="mini-stat-icon">
+                        <i class="mdi mdi-buffer float-end"></i>
+                    </div>
+                    <div class="text-white">
+                        <h6 class="text-uppercase mb-3 font-size-16 text-white">{% trans 'Zahirada' %}</h6>
+                        <h2 class="mb-4 text-white">{{ query_count_ir }}</h2>
+                        <span class="badge bg-info"> -29% </span> <span
+                            class="ms-2">{% trans 'From previous period' %}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+            <div class="card mini-stat bg-primary">
+                <div class="card-body mini-stat-img">
+                    <div class="mini-stat-icon">
+                        <i class="mdi mdi-cube-outline float-end"></i>
+                    </div>
+                    <div class="text-white">
+                        <h6 class="text-uppercase mb-3 font-size-16 text-white">{% trans 'Olib ketilgan' %}</h6>
+                        <h2 class="mb-4 text-white">{{ taken_count }}</h2>
+                        <span class="badge bg-warning"> -30% </span> <span
+                            class="ms-2">{% trans 'From previous period' %}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+            <div class="card mini-stat bg-primary">
+                <div class="card-body mini-stat-img">
+                    <div class="mini-stat-icon">
+                        <i class="mdi mdi-tag-text-outline float-end"></i>
+                    </div>
+                    <div class="text-white">
+                        <h6 class="text-uppercase mb-3 font-size-16 text-white">{% trans 'Yaroqsiz' %}</h6>
+                        <h2 class="mb-4 text-white">{{ query_count_in }}</h2>
+                        <span class="badge bg-danger"> -29% </span> <span
+                            class="ms-2">{% trans 'From previous period' %}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

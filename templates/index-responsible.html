@@ -1,0 +1,151 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load mytags %}
+
+{% block content %}
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            {% include 'base2.html' with inuse_count=query_count taken_count=query_count_tw query_count_ir=query_count_ir query_count_in=query_count_in name=get_cat.fullname %}
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table align-middle table-centered table-vertical table-nowrap mb-1">
+                                    <thead>
+                                    <th>
+                                        {% trans 'Product name' %}
+                                    </th>
+                                    <th>
+                                        {% trans 'Product image' %}
+                                    </th>
+                                    <th>
+                                        {% trans 'Product inventar number' %}
+                                    </th>
+                                    <th>
+                                        {% trans 'Product Responsible person' %}
+                                    </th>
+                                    <th>
+                                        {% trans 'Product Created at' %}
+                                    </th>
+                                    <th>
+                                        {% trans 'Product status' %}
+                                    </th>
+                                    <th>
+                                        {% trans 'Product Rooms' %}
+                                    </th>
+                                    <th>
+                                        {% trans 'Actions' %}
+                                    </th>
+
+                                    </thead>
+                                    <tbody>
+                                    {% for m in query %}
+                                        <tr>
+                                            <td>{{ m.name|truncatechars:'45' }}</td>
+                                            <td>
+                                                <img src="
+                                                {% if m.images %}
+                                                {{ m.images.url }}
+                                                {% else %}
+                                                {% static 'images/devices-sketch-image.jpg' %}
+                                                {% endif %}" alt="user-image"
+                                                     class="avatar-xs me-2 rounded-circle hoveringimg"/> 
+                                                <img class="hoverimg" src="
+                                                {% if m.images %}
+                                                {{ m.images.url }}
+                                                {% else %}
+                                                {% static 'images/devices-sketch-image.jpg' %}
+                                                {% endif %}">
+                                            </td>
+                                            <td>
+                                                {{ m.inventar_number }}
+                                            </td>
+                                            <td>
+                                                {{ m.responsible_id }}
+
+                                            </td>
+                                            <td>
+                                                {{ m.created_at| date:'d F Y' }}
+
+                                            </td>
+                                            <td>
+                                                {% if m.status == 1 %}
+                                                <span class="badge rounded-pill bg-success">
+                                                    {% trans 'Ishlatilmoqda' %}
+                                                {% elif m.status == 2 %}
+                                                <span class="badge rounded-pill bg-info">
+                                                    {% trans 'Zahirada' %}
+                                                {% elif m.status == 3 %}
+                                                <span class="badge rounded-pill bg-warning">
+                                                    {% trans 'Olib ketilgan' %}
+                                                {% elif m.status == 0 %}
+                                                <span class="badge rounded-pill bg-danger">
+                                                    {% trans 'Yaroqsiz' %}
+                                                {% endif %}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                {{ m.room_number }}
+                                            </td>
+                                            <td>
+                                                {% if request.user.is_superuser %}
+                                                <a href="#" class="btn btn-outline-danger btn-sm" onclick="confirm_product_delete('{{m.id}}', '{{m.inventar_number}}');"><i class="mdi mdi-trash-can-outline"></i></a>
+                                                <a href="{% url 'product-update' pk=m.pk %}" class="btn btn-outline-warning btn-sm"><i class="mdi mdi-pen"></i></a>
+                                                {% endif %}
+                                                <a href="{% url 'product-detail' m.pk %}" class="btn btn-outline-info btn-sm"><i class="mdi mdi-dots-vertical-circle"></i></a>
+                                                <a href="#" onclick="window.print();return false;" class="btn btn-outline-success btn-sm"><i class="mdi mdi-printer"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if query.has_other_pages %}
+                    <nav aria-label="...">
+                        <ul class="pagination justify-content-center">
+                            {% if query.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ query.previous_page_number }}" tabindex="-1">&laquo;</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="?page={{ query.previous_page_number }}">{{ query.previous_page_number }}</a></li>
+                            {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">&laquo;</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">x</a></li>
+                            {% endif %}
+                            
+                            <li class="page-item active">
+                                <a class="page-link" href="#">{{query.number}} <span class="sr-only">(current)</span></a>
+                            </li>
+
+                            {% if query.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ query.next_page_number  }}">{{ query.next_page_number  }}</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ query.next_page_number  }}">&raquo;</a>
+                            </li>
+                            {% else %}
+                            <li class="page-item"><a class="page-link" href="#">x</a></li>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">&raquo;</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+
+                    <br>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'layouts/footer.html' %}
+</div>
+{% endblock %}

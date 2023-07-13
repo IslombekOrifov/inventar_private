@@ -1,0 +1,196 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block button %}
+    <div class="d-none d-sm-block">
+        <div class="dropdown dropdown-topbar pt-3 mt-1 d-inline-block">
+            {% comment %} <a class="btn btn-primary waves-effect waves-light" href="{% url 'base-view' pk=cat_id %}">{% trans 'Return' %}</a> {% endcomment %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                {% comment %} {% if request.user.groups.first.max_limit_product > products_count %} {% endcomment %}
+                <div class="row">
+                    <div class="col-xl-8 col-md-10 col-6 offset-5">
+                        <div class="page-title-box">
+                            <h4>{% trans 'Edit your profile' %}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-8 col-md-10 col-6 offset-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="needs-validation" method="post">
+                                    {% csrf_token %}
+                                     <div class="row">
+                                        {% if profile_form.errors %}
+                                        {% for field in profile_form %}
+                                        {% for error in field.errors %}
+                                        <p style="color: red;">{{ error|escape }}</p>
+                                        {% endfor %}
+                                        {% endfor %}
+                                        <p>{% trans "Ma'lumotlarni tekshirib qaytadan jo'nating!" %}</p>
+                                        {% endif %}
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom04">{% trans 'Email' %}</label>
+                                                {% comment %} <input name="inventar_number" type="text" class="form-control" id="validationCustom04"
+                                                       placeholder="Inventar Number" required> {% endcomment %}
+                                                {{ profile_form.email }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom01">{% trans 'First name' %}</label>
+{#                                                <input type="text" class="form-control" id="validationCustom01"#}
+{#                                                       placeholder="Responsible Person" value="Mark" required>#}
+                                                {% comment %} <select name="responsible_id" class="form-control" id="validationCustom01">
+                                                    <option selected disabled>Responsible Person</option>
+                                                    <option value="">Number1</option>
+                                                </select> {% endcomment %}
+                                                {{ profile_form.first_name }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom01">{% trans 'Last name' %}</label>
+{#                                                <input type="text" class="form-control" id="validationCustom01"#}
+{#                                                       placeholder="Responsible Person" value="Mark" required>#}
+                                                {% comment %} <select name="responsible_id" class="form-control" id="validationCustom01">
+                                                    <option selected disabled>Responsible Person</option>
+                                                    <option value="">Number1</option>
+                                                </select> {% endcomment %}
+                                                {{ profile_form.last_name }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input class="btn btn-primary" type="submit" value="Submit form">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% comment %} {% else %}
+                <div class="row">
+                    <div class="col-xl-8 col-md-10 col-6 offset-5">
+                        <div class="page-title-box">
+                            <h3 style="color:yellow;">Diqqat!</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-8 col-md-10 col-6 offset-2">
+                        <div class="card" style="text-align: center;">
+                            <img src="{% static 'img/warning.png' %}">
+                            <p>Sizning limitingiz cheklanganligi tufayli boshqa ma'lumot qo'sha olmaysiz!</p>
+                            <p>Yana ma'lumot qo'shish uchun administrator bilan bog'laning!</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %} {% endcomment %}
+                <div class="row">
+                    <div class="col-xl-8 col-md-10 col-6 offset-5">
+                        <div class="page-title-box">
+                            <h4>{% trans 'Change password' %}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-8 col-md-10 col-6 offset-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="needs-validation" method="post" action="{% url 'pass_change' %}">
+                                    {% csrf_token %}
+                                     <div class="row">
+                                        {% if pass_form.errors %}
+                                        {% for field in pass_form %}
+                                        {% for error in field.errors %}
+                                        <p style="color: red;">{{ error|escape }}</p>
+                                        {% endfor %}
+                                        {% endfor %}
+                                        <p>{% trans "Ma'lumotlarni tekshirib qaytadan jo'nating!" %}</p>
+                                        {% endif %}
+
+                                        {% if password_change_done %}
+                                            <p>{% trans "Parolingiz muvaffaqiyatli almashtirildi" %}</p>
+                                        {% endif %}
+
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom03">{% trans 'Old password' %}</label>
+{#                                                <input type="text" class="form-control" id="validationCustom03"#}
+{#                                                       placeholder="Rooms Number" required>#}
+                                                {% comment %} <select name="room_number" class="form-control" id="validationCustom03">
+                                                    <option selected disabled>Rooms Number</option>
+                                                    <option value="">Number1</option>
+                                                </select> {% endcomment %}
+                                                {% render_field pass_form.old_password class="form-control" %}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom04">{% trans 'New password' %}</label>
+                                                {% comment %} <input name="inventar_number" type="text" class="form-control" id="validationCustom04"
+                                                       placeholder="Inventar Number" required> {% endcomment %}
+                                                {% render_field pass_form.new_password1 class="form-control" %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="validationCustom01">{% trans 'Repeat new password' %}</label>
+{#                                                <input type="text" class="form-control" id="validationCustom01"#}
+{#                                                       placeholder="Responsible Person" value="Mark" required>#}
+                                                {% comment %} <select name="responsible_id" class="form-control" id="validationCustom01">
+                                                    <option selected disabled>Responsible Person</option>
+                                                    <option value="">Number1</option>
+                                                </select> {% endcomment %}
+                                                {% render_field pass_form.new_password2 class="form-control" %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input class="btn btn-primary" type="submit" value="Submit form">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        function add(){
+            var new_chq_no = parseInt($('#total_chq').val())+1;
+            //var new_chql_no = parseInt($('#total_chql').val())+1;
+            var new_label="<label class='form-label' id='newl_"+new_chq_no+"'>Extra field "+new_chq_no+"</label>";
+            var new_input="<input type='text' class='form-control' id='new_"+new_chq_no+"' name='inputs' required>";
+            $('#new_chq').append(new_label);
+            $('#new_chq').append(new_input);
+            //$('#total_chql').val(new_chql_no)
+            $('#total_chq').val(new_chq_no)
+          }
+          function remove(){
+            var last_chq_no = $('#total_chq').val();
+            //var last_chql_no = $('#total_chql').val();
+            if(last_chq_no>0){
+              $('#new_'+last_chq_no).remove();
+              $('#total_chq').val(last_chq_no-1);
+              $('#newl_'+last_chq_no).remove();
+              $('#total_chql').val(last_chq_no-1);
+            }
+          }
+    </script>
+    {% include 'layouts/footer.html' %}
+{% endblock %}

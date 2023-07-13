@@ -1,0 +1,17 @@
+.row .card .card-body .hoverimg {
+    display: none;
+    width: 5%;
+}
+
+.row .card .card-body .hoveringimg:hover + .hoverimg {
+    top: 44%;
+    left: 0.3%;
+    bottom: 0;
+    display:block;
+    position: fixed;   
+    z-index: 1100; 
+    width: 12%; 
+    height: auto;
+    border: 2px solid greenyellow;
+    border-radius: 10px;
+}
