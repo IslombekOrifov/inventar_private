@@ -42,64 +42,78 @@
 
                                     </thead>
                                     <tbody>
-                                    {% for m in query %}
-                                        <tr>
-                                            <td>{{ m.name|truncatechars:'45' }}</td>
-                                            <td>
-                                                <img src="
-                                                {% if m.images %}
-                                                {{ m.images.url }}
-                                                {% else %}
-                                                {% static 'images/devices-sketch-image.jpg' %}
-                                                {% endif %}" alt="user-image"
-                                                     class="avatar-xs me-2 rounded-circle hoveringimg"/> 
-                                                <img class="hoverimg" src="
-                                                {% if m.images %}
-                                                {{ m.images.url }}
-                                                {% else %}
-                                                {% static 'images/devices-sketch-image.jpg' %}
-                                                {% endif %}">
-                                            </td>
-                                            <td>
-                                                {{ m.inventar_number }}
-                                            </td>
-                                            <td>
-                                                {{ m.responsible_id }}
-
-                                            </td>
-                                            <td>
-                                                {{ m.created_at| date:'d F Y' }}
-
-                                            </td>
-                                            <td>
-                                                {% if m.status == 1 %}
-                                                <span class="badge rounded-pill bg-success">
-                                                    {% trans 'Ishlatilmoqda' %}
-                                                {% elif m.status == 2 %}
-                                                <span class="badge rounded-pill bg-info">
-                                                    {% trans 'Zahirada' %}
-                                                {% elif m.status == 3 %}
-                                                <span class="badge rounded-pill bg-warning">
-                                                    {% trans 'Olib ketilgan' %}
-                                                {% elif m.status == 0 %}
-                                                <span class="badge rounded-pill bg-danger">
-                                                    {% trans 'Yaroqsiz' %}
-                                                {% endif %}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                {{ m.room_number }}
-                                            </td>
-                                            <td>
-                                                {% if request.user.is_superuser %}
-                                                <a href="#" class="btn btn-outline-danger btn-sm" onclick="confirm_product_delete('{{m.id}}', '{{m.inventar_number}}');"><i class="mdi mdi-trash-can-outline"></i></a>
-                                                <a href="{% url 'product-update' pk=m.pk %}" class="btn btn-outline-warning btn-sm"><i class="mdi mdi-pen"></i></a>
-                                                {% endif %}
-                                                <a href="{% url 'product-detail' m.pk %}" class="btn btn-outline-info btn-sm"><i class="mdi mdi-dots-vertical-circle"></i></a>
-                                                <a href="#" onclick="window.print();return false;" class="btn btn-outline-success btn-sm"><i class="mdi mdi-printer"></i></a>
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
+                                        {% for m in query %}
+                                            <tr style="cursor: pointer !important;" data-href="{% url 'product-detail' m.pk %}" >
+                                                <td>
+                                                    <a class="d-block customligth" href="{% url 'product-detail' m.pk %}">
+                                                        {{ m.name|truncatechars:'45' }}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="d-block customligth" href="{% url 'product-detail' m.pk %}">
+                                                    <img src="
+                                                    {% if m.images %}
+                                                    {{ m.images.url }}
+                                                    {% else %}
+                                                    {% static 'images/devices-sketch-image.jpg' %}
+                                                    {% endif %}" alt="user-image"
+                                                        class="avatar-xs me-2 rounded-circle hoveringimg"/> 
+                                                    <img class="hoverimg" src="
+                                                    {% if m.images %}
+                                                    {{ m.images.url }}
+                                                    {% else %}
+                                                    {% static 'images/devices-sketch-image.jpg' %}
+                                                    {% endif %}">
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="d-block customligth" href="{% url 'product-detail' m.pk %}">
+                                                    {{ m.inventar_number }}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="d-block customligth" href="{% url 'product-detail' m.pk %}">
+                                                    {{ m.responsible }}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="d-block customligth" href="{% url 'product-detail' m.pk %}">
+                                                    {{ m.created_at| date:'d F Y' }}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="d-block customligth" href="{% url 'product-detail' m.pk %}">
+                                                    {% if m.status == 1 %}
+                                                    <span class="badge rounded-pill bg-success">
+                                                        {% trans 'Ishlatilmoqda' %}
+                                                    {% elif m.status == 2 %}
+                                                    <span class="badge rounded-pill bg-info">
+                                                        {% trans 'Zahirada' %}
+                                                    {% elif m.status == 3 %}
+                                                    <span class="badge rounded-pill bg-warning">
+                                                        {% trans 'Olib ketilgan' %}
+                                                    {% elif m.status == 0 %}
+                                                    <span class="badge rounded-pill bg-danger">
+                                                        {% trans 'Yaroqsiz' %}
+                                                    {% endif %}
+                                                    </span>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="d-block customligth" href="{% url 'product-detail' m.pk %}">
+                                                    {{ m.room_number }}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    {% if request.user.is_superuser %}
+                                                    <a href="#" class="btn btn-outline-danger btn-sm" onclick="confirm_product_delete('{{m.id}}', '{{m.inventar_number}}');"><i class="mdi mdi-trash-can-outline"></i></a>
+                                                    <a href="{% url 'product-update' pk=m.pk %}" class="btn btn-outline-warning btn-sm"><i class="mdi mdi-pen"></i></a>
+                                                    {% endif %}
+                                                    <a href="{% url 'product-detail' m.pk %}" class="btn btn-outline-info btn-sm"><i class="mdi mdi-dots-vertical-circle"></i></a>
+                                                    <a href="#" onclick="window.print();return false;" class="btn btn-outline-success btn-sm"><i class="mdi mdi-printer"></i></a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>

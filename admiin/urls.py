@@ -57,6 +57,8 @@ urlpatterns = [
     path('responsible/application/', responsible_application, name='responsiblepage-application'),
     path('responsibles/', AdminResponsibles, name='responsiblepage-liderrespon'),
 
+    # actions
+    path('actions/all/', actions_view, name='actions-all'),
 
     path('building', test),
 ]

@@ -49,9 +49,6 @@
                         <div class="col-6 col-xl-6" style="margin-left: 250px">
                             <div class="card">
                                 <div class="card-body">
-                                    {% if error %}
-                                    <p style="color: red;">{{ error }}</p>
-                                    {% endif %}
                                     <form action="{% url 'create-by-excel' %}" class="custom-validation" method="post" enctype="multipart/form-data">
                                         {% csrf_token %}
                                         

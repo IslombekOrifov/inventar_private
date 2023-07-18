@@ -1,7 +1,7 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 
-from .models import Category, Model, Product
+from .models import Category, Model, Product, ActionHistory
 
 
 class MyTranslationAdmin(TranslationAdmin):
@@ -43,3 +43,9 @@ class ProductModelAdmin(admin.ModelAdmin):
     list_filter = ['group']
 
 
+@admin.register(ActionHistory)
+class ActionHistoryModelAdmin(admin.ModelAdmin):
+    list_display = [
+        'id', 'user', 'action', 'timestamp', 
+        'content_type',     'object_id', 'content_object',  
+    ]

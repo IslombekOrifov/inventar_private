@@ -5,6 +5,10 @@ from django.core.files import File
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import Group
 
+from django.utils import timezone
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
+
 from PIL import Image, ImageDraw
 import qrcode
 
@@ -66,3 +70,24 @@ class Product(models.Model):
     #     self.qr_code.save(files_name, File(stream), save=False)
     #     qr_offset.close()
     #     super().save(*args, **kwargs)
+
+
+
+class ActionHistory(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
+    action = models.CharField(max_length=10)
+    data = models.JSONField()
+    timestamp = models.DateTimeField(default=timezone.now)
+    content_type = models.ForeignKey(ContentType, on_delete=models.SET_NULL, null=True)
+    changed_model_name = models.CharField(max_length=50)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+    inventar_number = models.CharField(max_length=255, blank=True, verbose_name=_('inventar_number'), null=True)
+
+    def __str__(self):
+        if self.user:
+            text = f'{self.user.username}: {self.action}'
+        else:
+            text = f'unknown user: {self.action}'
+        return text
+

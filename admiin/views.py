@@ -17,7 +17,7 @@ from django.utils.decorators import method_decorator
 from django.conf import settings
 
 from accounts.models import CustomUser, Department
-from index.models import Category, Model, Product
+from index.models import Category, Model, Product, ActionHistory
 from .decorators import superuser_required
 from .freshed_list import remove_from_list_item
 from .forms import *
@@ -1008,5 +1008,27 @@ def AdminResponsibleProducts(request, pk):
             'query_count_in': query_count_in,
             }
         return render(request, 'index-responsible.html', context=context)
+    else: 
+        raise Http404()
+    
+
+@login_required
+def actions_view(request):
+    if request.user.is_superuser or request.user.status_member in ['dp', 'dr']:
+        q = ActionHistory.objects.filter(group=request.user.groups.first()).order_by('pk')
+        
+        page = request.GET.get('page', 1)
+        paginator = Paginator(q, 50)
+        try:
+            query = paginator.page(page)
+        except PageNotAnInteger:
+            query = paginator.page(1)
+        except EmptyPage:
+            query = paginator.page(paginator.num_pages)
+
+        context = {
+            'query': query, 
+            }
+        return render(request, 'action.html', context=context)
     else: 
         raise Http404()

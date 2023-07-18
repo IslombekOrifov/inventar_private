@@ -21,7 +21,14 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">{% trans 'Edit responsible person' %}</h4>
-                                    {{ form.errors }}
+                                    {% if form.errors %}
+                                        {% for field in form %}
+                                        {% for error in field.errors %}
+                                        <p style="color: red;">{{ error|escape }}</p>
+                                        {% endfor %}
+                                        {% endfor %}
+                                        <p>{% trans "Ma'lumotlarni tekshirib qaytadan jo'nating!" %}</p>
+                                    {% endif %}
                                     <form class="custom-validation" action="#" method="post">
                                         {% csrf_token %}
                                         <label class="form-label">{% trans 'Email' %}</label>

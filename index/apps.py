@@ -6,3 +6,6 @@ class IndexConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'index'
     verbose_name = _('Index')
+
+    def ready(self):
+        import index.signals

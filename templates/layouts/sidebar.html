@@ -25,6 +25,13 @@
                         </a>
                     </li>
                     <li>
+                        <a>
+                            <i class="mdi mdi-account-box"></i>
+                            <span class="badge rounded-pill bg-success float-end">{{ res_count}}</span>
+                            <span>{% trans 'Mening  arizalarim' %}</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{% url 'admin-rooms' %}">
                             <i class="mdi mdi-view-dashboard"></i>
                             <span>{% trans 'Rooms' %}</span>
@@ -35,6 +42,13 @@
                             <i class="mdi mdi-calendar-check"></i>
                             <span class="badge rounded-pill bg-danger float-end">{{model_count}}</span>
                             <span>{% trans 'Models' %}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'actions-all' %}">
+                            <i class="mdi mdi-calendar-check"></i>
+                            <span class="badge rounded-pill bg-danger float-end"></span>
+                            <span>{% trans 'Actions' %}</span>
                         </a>
                     </li>
                     <li>
@@ -113,6 +127,13 @@
                                 <i class="mdi mdi-account-box"></i>
                                 <span class="badge rounded-pill bg-success float-end">{{res_count}}</span>
                                 <span>{% trans 'Mening  arizalarim' %}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'actions-all' %}">
+                                <i class="mdi mdi-calendar-check"></i>
+                                <span class="badge rounded-pill bg-danger float-end"></span>
+                                <span>{% trans 'Actions' %}</span>
                             </a>
                         </li>
                     {% endif %}

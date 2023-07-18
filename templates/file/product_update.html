@@ -33,12 +33,12 @@
                                     {% csrf_token %}
                                      <div class="row">
                                         {% if form.errors %}
-                                        {% for field in form %}
-                                        {% for error in field.errors %}
-                                        <p style="color: red;">{{ error|escape }}</p>
-                                        {% endfor %}
-                                        {% endfor %}
-                                        <p>{% trans "Ma'lumotlarni tekshirib qaytadan jo'nating!" %}</p>
+                                            {% for field in form %}
+                                                {% for error in field.errors %}
+                                                    <p style="color: red;">{{ error|escape }}</p>
+                                                {% endfor %}
+                                            {% endfor %}
+                                            <p>{% trans "Ma'lumotlarni tekshirib qaytadan jo'nating!" %}</p>
                                         {% endif %}
                                         <div class="col-md-4">
                                             <div class="mb-3">

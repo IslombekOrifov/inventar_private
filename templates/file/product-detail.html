@@ -114,9 +114,11 @@
                                             <div class="btn-group me-2 mb-2 mb-sm-0">
                                                 <a href="#" onclick="window.print();return false;"><button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-print"></i></button></a>
                                             </div>
+                                            {% if request.user.is_superuser%}
                                             <div class="btn-group me-2 mb-2 mb-sm-0">
                                                 <a href="#" onclick="confirm_product_delete('{{query.id}}', '{{query.inventar_number}}');"><button type="button" class="btn btn-primary waves-light waves-effect"><i class="far fa-trash-alt"></i></button></a>
                                             </div>
+                                            {% endif %}
                                         </div>
                                         <div class="card-body">
 
@@ -179,14 +181,6 @@
                                                         <p>{% trans 'schet' %}</p>
                                                         <div class="my-1">
                                                             <b>{{ query.schet }}</b>  
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4 col-4 text-center">
-                                                    <div class="card" style="background-color: #7A6FBE; border-radius: 20px; padding: 10%;">
-                                                        <p>{% trans 'unit_of_measurement' %}</p>
-                                                        <div class="my-1">
-                                                            <b>{{ query.unit_of_measurement }}</b> 
                                                         </div>
                                                     </div>
                                                 </div>
