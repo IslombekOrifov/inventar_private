@@ -25,7 +25,7 @@ from admiin.views import CustomLoginView
 urlpatterns = []
 
 urlpatterns += i18n_patterns(
-    path('admin/', admin.site.urls),
+    path('/15615asdasdsf/15sdf51/admin/', admin.site.urls),
     path('accounts/login/', CustomLoginView.as_view(), name='login'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('i18n/', include('django.conf.urls.i18n')),

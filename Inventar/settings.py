@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-u&faj99=5()bk)99v)7*k1aag23cueqhg!grxny@*9dagib@l^'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -71,12 +71,25 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 WSGI_APPLICATION = 'Inventar.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'inventdb',
+        'USER': 'postgres',
+        'PASSWORD': 'Assalom@13',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -113,8 +126,8 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = BASE_DIR / 'static'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = BASE_DIR / 'static'
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -138,7 +151,7 @@ EMAIL_PORT = 587
 
 ACCOUNT_ACTIVATION_DAYS = 30
 REGISTRATION_AUTO_LOGIN = True
-CSRF_TRUSTED_ORIGINS = ['https://e030-139-28-44-31.in.ngrok.io']
+# CSRF_TRUSTED_ORIGINS = ['https://e030-139-28-44-31.in.ngrok.io']
 
 # WhiteNoise
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
