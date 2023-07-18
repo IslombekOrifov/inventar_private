@@ -76,7 +76,7 @@ class Product(models.Model):
 class ActionHistory(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
     action = models.CharField(max_length=10)
-    data = models.JSONField()
+    data = models.TextField()
     timestamp = models.DateTimeField(default=timezone.now)
     content_type = models.ForeignKey(ContentType, on_delete=models.SET_NULL, null=True)
     changed_model_name = models.CharField(max_length=50)
